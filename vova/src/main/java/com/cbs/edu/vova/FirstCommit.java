@@ -1,4 +1,4 @@
-package com.cbs.edu;
+package com.cbs.edu.vova;
 
 /**
  * Created by User on 05.04.2017.
