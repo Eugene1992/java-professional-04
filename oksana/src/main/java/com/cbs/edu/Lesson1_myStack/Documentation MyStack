@@ -1,0 +1,32 @@
+class MyStack<T>
+implements
+Iterable<T>
+
+Class MyClass has three private variables. One of these is the variable (final int INITIAL_ARRAY_CAPACITY)
+that describes the capacity of the array and is 5.
+An array (T[] arr) and the number of elements in the array (int top) are next fields of the class MyStack<T>.
+
+Class MyStack<T> has methods:
+  - T push(T object);
+  - T pop();
+  - Iterator<T> iterator();
+
+  The method T push(T object) is for adding elements according to the LIFO principle. This method also
+  increases the capacity of the array is automatically doubled
+
+  The T pop() method is used to remove the object at the top of this stack and returns that object as the
+  value of this function.
+  This method throws EmptyStackException. This is thrown if this stack is empty.
+
+  The method Iterator<T> iterator() returns an iterator (object of class MyIterator) over a set of elements of type T.
+
+  Class MyClass<T> contains an inner class MyIterator as implementation of Iterator interface.
+
+  Class MyIterator has methods:
+   - boolean hasNext();
+   - T next();
+   - void remove();
+   The method boolean hasNext() returns true if the iteration has more elements.
+   The method T next() returns the next element in the iteration.
+   The method void remove() removes from the underlying collection the last element returned
+   by this iterator (optional operation).
