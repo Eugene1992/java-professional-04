@@ -1,4 +1,4 @@
 package com.cbs.edu.test;
 public class Test {
-//new path
+//new path test
 }
