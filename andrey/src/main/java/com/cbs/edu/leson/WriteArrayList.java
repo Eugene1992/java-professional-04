@@ -121,7 +121,7 @@ public class WriteArrayList<T> implements Iterable<T> {
         return top;
     }
     public Map<int,T>   givemap(T objact){
-        Map  map=  new HashMap(int;T);
+        Map<String, T> staff = new HashMap<String, T>();
         for (int number =0 ; number < top; number++){
             map.put(number,this.arr[number];}
     }
