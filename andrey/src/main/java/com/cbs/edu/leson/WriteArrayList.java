@@ -4,9 +4,9 @@ package com.cbs.edu.leson;
  • add(T value) - Adds an element to the end of an array
  • add(int index, T value) - inserts the element into the specified position all items on the left are moved to one element
  • get(int index) gives an instance of an element at the specified index
- • set(int index, T value)
- • contains(T value)
- • remove(int index)
+ • set(int index, T value) - changes the element in the specified position to the one that is transferred
+ • contains(T value)  -  determines the presence of at least some values
+ • remove(int index) - removes the specified object and all elements that are "to the right" are moved one cell to the left
  • iterator()
  • size()
  */
@@ -80,12 +80,12 @@ public class WriteArrayList<T> implements Iterable<T> {
     //contains - determines the presence of at least some values
 
     public boolean contains(T object){
-         boolean bul;
+         boolean bul= false;
         for (int number = 0; number < top; number++){
         if (this.arr[number] != null){
-            return bul=true;
-        } else return bul=false;
-        }
+             bul=true;
+        } else bul=false;
+        }    return bul;
     }
 
     //  remove - removes the specified object and all elements that are "to the right" are moved one cell to the left
@@ -123,7 +123,7 @@ public class WriteArrayList<T> implements Iterable<T> {
     public Map<int,T>   givemap(T objact){
         Map<String, T> staff = new HashMap<String, T>();
         for (int number =0 ; number < top; number++){
-            map.put(number,this.arr[number];}
+            map.put(number,this.arr[number]}
     }
 
 }
