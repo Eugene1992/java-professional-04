@@ -17,7 +17,7 @@ import java.util.Iterator;
 public class WriteArrayList<T> implements Iterable<T> {
     private static final int startSize = 1;
     private T[] arr;
-    private int top;
+    public int top;
 
     public WriteArrayList(){
         this.top = 0;
@@ -57,7 +57,7 @@ public class WriteArrayList<T> implements Iterable<T> {
     // get - gives an instance of an element at the specified index
 
     public T get(int index) throws ArrayIndexOutOfBoundsException{
-        if (index >= 0 | index<top ){
+        if (index >= 0 | index <= top ){
             T elem= this.arr[index];
            /* for (int numberShear = index; numberShear < top; numberShear++){
                 this.arr[numberShear]=this.arr[numberShear+1];} */
@@ -69,7 +69,7 @@ public class WriteArrayList<T> implements Iterable<T> {
     // set - changes the element in the specified position to the one that is transferred
 
     public T set(int index,T object)throws ArrayIndexOutOfBoundsException{
-        if (index >= 0 | index<top ){
+        if (index >= 0 | index<=top ){
         this.arr[index]= object;
         return object;
         }
@@ -120,10 +120,12 @@ public class WriteArrayList<T> implements Iterable<T> {
     public int  size(){
         return top;
     }
-    public Map<int,T>   givemap(T objact){
-        Map<String, T> staff = new HashMap<String, T>();
-        for (int number =0 ; number < top; number++){
-            map.put(number,this.arr[number]}
-    }
+
+  //  public Map<int,T>   givemap(T objact){
+   //     Map<String, T> staff = new HashMap<String, T>();
+   //     for (int number =0 ; number < top; number++){
+    //        map.put(number,this.arr[number]}
+  //  }
+
 
 }
