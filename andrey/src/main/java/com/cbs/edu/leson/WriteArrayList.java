@@ -77,20 +77,25 @@ public class WriteArrayList<T> implements Iterable<T> {
 
     //contains - determines the presence of at least some values
 
-    public boolean contains(T object){
-         T bul = null;
+    public boolean  contains(T object){
+         boolean bul;
         for (int number = 0; number < top; number++){
-        if (this.arr[number]!= bul){
-            return true;
-        } else return false;
+        if (this.arr[number] != null){
+            return bul=true;
+        } else return bul=false;
         }
     }
 
-    //  remove
+    //  remove - removes the specified object and all elements that are "to the right" are moved one cell to the left
 
-    public T remove(int index){
-
+    public void remove(int index)throws ArrayIndexOutOfBoundsException{
+        if (index >= 0 | index<top ){
+        for (int numberShear = index; numberShear < top; numberShear++){
+            this.arr[numberShear]=this.arr[numberShear+1];}
+        this.arr[top]= null;
+    }     else  throw new EmptyStackException();
     }
+    @Override
     public T  iterator(){
 
     }
