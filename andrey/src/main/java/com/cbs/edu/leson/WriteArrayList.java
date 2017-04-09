@@ -46,6 +46,7 @@ public class WriteArrayList<T> implements Iterable<T> {
         for (int numberShear = top; numberShear < index; numberShear--){
             this.arr[numberShear+1]=this.arr[numberShear];}
          this.arr[index]= object;
+            top++;
         }
         else  throw new EmptyStackException();
         return object;
@@ -77,7 +78,7 @@ public class WriteArrayList<T> implements Iterable<T> {
 
     //contains - determines the presence of at least some values
 
-    public boolean  contains(T object){
+    public boolean contains(T object){
          boolean bul;
         for (int number = 0; number < top; number++){
         if (this.arr[number] != null){
@@ -93,13 +94,30 @@ public class WriteArrayList<T> implements Iterable<T> {
         for (int numberShear = index; numberShear < top; numberShear++){
             this.arr[numberShear]=this.arr[numberShear+1];}
         this.arr[top]= null;
+            top--;
     }     else  throw new EmptyStackException();
     }
     @Override
-    public T  iterator(){
+    public Iterator<T>  iterator(){
+        return new MyIterator()
 
     }
-    public T  size(){
+    private class MyIterator implements Iterator<T> {
+        int current = -1;
+
+        public boolean hasNext() {
+            return current + 1 < top;
+        }
+
+        public T next() {
+            return arr[++current];
+        }
+
+        public void remove() {
+            arr[current] = null;
+        }
+    }
+    public int  size(){
         return top;
     }
     public T givemap(T objact){
