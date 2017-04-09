@@ -18,6 +18,7 @@ public class WriteArrayList<T> implements Iterable<T> {
     private static final int startSize = 1;
     private T[] arr;
     private int top;
+
     public WriteArrayList(){
         this.top = 0;
         this.arr = (T[]) new Object[startSize];
@@ -99,8 +100,7 @@ public class WriteArrayList<T> implements Iterable<T> {
     }
     @Override
     public Iterator<T>  iterator(){
-        return new MyIterator()
-
+        return new MyIterator();
     }
     private class MyIterator implements Iterator<T> {
         int current = -1;
@@ -120,8 +120,10 @@ public class WriteArrayList<T> implements Iterable<T> {
     public int  size(){
         return top;
     }
-    public T givemap(T objact){
-
+    public Map<int,T>   givemap(T objact){
+        Map  map=  new HashMap(int;T);
+        for (int number =0 ; number < top; number++){
+            map.put(number,this.arr[number];}
     }
 
 }
