@@ -75,20 +75,18 @@ public class MyArrayList<T> {
      */
 
     public boolean contains(T value) {
-        checkIndex(index);
+        if(value!=null)
 
-        for (int i = 0; i < size; i++) {
+        for (T temp:elements) {
 
 //            if () {
-//
 //            } else
-//
-//
-//        }
-        }
-        return true;
-    }
+            return true;
 
+
+        }
+        return false;
+    }
  //       думаю
 
 
