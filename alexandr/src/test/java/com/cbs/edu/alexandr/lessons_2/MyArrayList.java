@@ -19,6 +19,7 @@ public class MyArrayList<T> {
     private static final int CAPACITY = 16;
     private T[] elements;
     private int index;
+
     private int size;
 
     //   ArrayList<Integer> arrayList = new ArrayList<>();
