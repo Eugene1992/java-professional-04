@@ -14,7 +14,7 @@ import java.util.Map;
  * iterator() Returns an iterator over the elements in this list in proper sequence.
  * size() Returns the number of elements in this list.
  * countSymbol() Returns map
-
+ *
  * @param <T>
  */
 
@@ -55,43 +55,44 @@ public class MyArrayList<T> implements Iterable {
         size++;
     }
 
-    public T remove(int index)throws IndexOutOfBoundsException{
+    public T remove(int index) throws IndexOutOfBoundsException {
         if (index < 0 || index >= size)
             throw new IndexOutOfBoundsException();
-        System.arraycopy(arr, index+1, arr, index, size - index - 1);
+        System.arraycopy(arr, index + 1, arr, index, size - index - 1);
         T elem = arr[--size];
         arr[size] = null;
         return elem;
-
     }
-    public T get(int index){
+
+    public T get(int index) {
         if (index < 0 || index >= size)
             throw new IndexOutOfBoundsException();
         return arr[index];
     }
 
-    public T set(int index, T value){
+    public T set(int index, T value) {
         if (index < 0 || index >= size)
             throw new IndexOutOfBoundsException();
         return arr[index] = value;
     }
 
-    public boolean contains(T value){
-        if(value != null) {
+    public boolean contains(T value) {
+        if (value != null) {
             for (T tmp : arr) {
                 if (tmp.equals(value))
                     return true;
             }
-        }return false;
+        }
+        return false;
     }
 
-    public int size(){
+    public int size() {
         return size;
     }
 
-    Map<String, Integer> countSymbol(){
+    Map<String, Integer> countSymbol() {
         int count = 0;
-        for(int i = 0; i < str.length(); i++){
+        for (int i = 0; i < str.length(); i++) {
             count++;
         }
         Map<String, Integer> map = new HashMap<>();

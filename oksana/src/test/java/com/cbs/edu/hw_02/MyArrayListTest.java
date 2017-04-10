@@ -13,7 +13,7 @@ public class MyArrayListTest {
 
 
     @Before
-    public void setUp(){
+    public void setUp() {
         myArrayList = new MyArrayList<>();
         value1 = 45;
         value2 = 50;
@@ -21,7 +21,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void addTest1PlusGetTest(){
+    public void addTest1PlusGetTest() {
 
         Assert.assertTrue(myArrayList.add(value2));
         /*myArrayList.add(value1);
@@ -31,9 +31,10 @@ public class MyArrayListTest {
         Assert.assertEquals(value3, element);*/
 
     }
-//как написать тест для метода add(int index, T value), если он ничего не возвращает
+
+    //как написать тест для метода add(int index, T value), если он ничего не возвращает
     @Test
-    public void addTest2(){
+    public void addTest2() {
 
 
     }
@@ -46,16 +47,15 @@ public class MyArrayListTest {
 
     //как написать тест, если не использовать метод add???
     @Test
-    public void removeTest(){
-
+    public void removeTest() {
         myArrayList.add(value1);
         myArrayList.add(value2);
-        myArrayList.add(1,value3);
+        myArrayList.add(1, value3);
         myArrayList.remove(1);
         Integer element = myArrayList.get(1);
         Assert.assertEquals(value2, element);
-
     }
+
     @Test(expected = IndexOutOfBoundsException.class)
     public void removeWrongIndex() {
         myArrayList.add(value1);
@@ -63,47 +63,49 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void containsTest(){
+    public void containsTest() {
         myArrayList.add(value1);
         myArrayList.add(value2);
         Assert.assertTrue(myArrayList.contains(value2));
     }
 
     @Test
-    public void setTest(){
+    public void setTest() {
         myArrayList.add(value1);
         myArrayList.add(value2);
         Integer element = myArrayList.set(0, value3);
         Assert.assertEquals(value3, element);
-
     }
+
     @Test(expected = IndexOutOfBoundsException.class)
     public void setWrongIndex() {
-        myArrayList.add(value1);
-        myArrayList.set(2, value3);
+        final int unexpectedIndex = -3;
+        myArrayList.set(unexpectedIndex, value3);
     }
 
     @Test
-    public void sizeTest(){
-        myArrayList.add(value1);
-        myArrayList.add(value2);
-        int s = myArrayList.size();
-        Assert.assertEquals(2, s);
+    public void sizeTest() {
+        final int expectedSize = 5;
+        for (int i = 0; i < expectedSize; i++) {
+            myArrayList.add(value2);
+        }
+        final int actualSize = myArrayList.size();
+        Assert.assertEquals(expectedSize, actualSize);
     }
 
     @Test
-    public void iteratorTest(){
+    public void iteratorTest() {
         Assert.assertNotNull(myArrayList.iterator());
     }
 
     @Test
-    public void hasNextTest(){
+    public void hasNextTest() {
         myArrayList.add(value1);
         Assert.assertTrue(myArrayList.iterator().hasNext());
     }
 
     @Test
-    public void nextTest(){
+    public void nextTest() {
         myArrayList.add(value1);
         Assert.assertNotNull(myArrayList.iterator().next());
         Integer element = myArrayList.iterator().next();
@@ -111,17 +113,9 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void countSymbolTest(){
+    public void countSymbolTest() {
         Integer count = 11;
         Assert.assertNotNull(myArrayList.countSymbol());
         Assert.assertEquals(count, myArrayList.countSymbol().get("Hello, Java"));
     }
-
-
-
-
-
-
-
-
 }
