@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.Random;
 
 /**
- * Main class which contain examples.
+ *Main class which contain examples.
  */
 public class Main {
     public static void main(String[] args) {
