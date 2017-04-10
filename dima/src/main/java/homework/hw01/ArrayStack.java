@@ -39,13 +39,13 @@ public class ArrayStack<T> implements Iterable<T> {
      */
     public T add(int index, T object) throws ArrayIndexOutOfBoundsException {
         if (index >= 0 | index < top) {
-            if (top == (stackArray.length)) {
+            if (top == stackArray.length) {
                 T[] ArrayStackCopy = (T[]) new Object[(this.stackArray.length * 3) / 2 + 1];
                 System.arraycopy(this.stackArray, 0, ArrayStackCopy, 0, top);
                 this.stackArray = ArrayStackCopy;
             }
-            for (int numberShear = top; numberShear < index; numberShear--) {
-                this.stackArray[numberShear + 1] = this.stackArray[numberShear];
+            for (int num = top; num < index; num--) {
+                this.stackArray[num + 1] = this.stackArray[num];
             }
 
             this.stackArray[index] = object;
