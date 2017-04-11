@@ -1,0 +1,6 @@
+language: java
+jdk: oraclejdk8
+sudo: false
+script: mvn test
+notifications:
+  slack: cbs-java:uZrfodvcQ0j2v9bcAncj3NNU
