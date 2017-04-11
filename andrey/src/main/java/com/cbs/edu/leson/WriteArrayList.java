@@ -20,7 +20,7 @@ public class WriteArrayList<T> implements Iterable<T> {
     public int top;
 
     public WriteArrayList(){
-        this.top = 0;
+        this.top = 1;
         this.arr = (T[]) new Object[startSize];
     }
 
@@ -38,7 +38,7 @@ public class WriteArrayList<T> implements Iterable<T> {
     // add(int index,T object)- inserts the element into the specified position all items on the left are moved to one element
 
     public T add(int index,T object) throws ArrayIndexOutOfBoundsException{
-        if (index >= 0 | index<top ){
+        if ((index > 0 ) | (index < this.top) ){
             if (top == (arr.length)) {
                 T[] newArr = (T[]) new Object[(this.arr.length*3)/2 + 1];
                 System.arraycopy(this.arr, 0, newArr, 0, this.top);
@@ -49,7 +49,7 @@ public class WriteArrayList<T> implements Iterable<T> {
          this.arr[index]= object;
             top++;
         }
-        else  throw new EmptyStackException();
+        else  throw new ArrayIndexOutOfBoundsException();
         return object;
 
     }
@@ -57,8 +57,8 @@ public class WriteArrayList<T> implements Iterable<T> {
     // get - gives an instance of an element at the specified index
 
     public T get(int index) throws ArrayIndexOutOfBoundsException{
-        if (index >= 0 | index <= top ){
-            T elem= this.arr[index];
+        if (index > 0 | index <= top ){
+            T elem = this.arr[index];
            /* for (int numberShear = index; numberShear < top; numberShear++){
                 this.arr[numberShear]=this.arr[numberShear+1];} */
             return elem;
@@ -69,11 +69,11 @@ public class WriteArrayList<T> implements Iterable<T> {
     // set - changes the element in the specified position to the one that is transferred
 
     public T set(int index,T object)throws ArrayIndexOutOfBoundsException{
-        if (index >= 0 | index<=top ){
+        if (index > 0 | index<=top ){
         this.arr[index]= object;
         return object;
         }
-        else  throw new EmptyStackException();
+        else  throw new ArrayIndexOutOfBoundsException();
 
     }
 
@@ -81,7 +81,7 @@ public class WriteArrayList<T> implements Iterable<T> {
 
     public boolean contains(T object){
          boolean bul= false;
-        for (int number = 0; number < top; number++){
+        for (int number = 1; number < top; number++){
         if (this.arr[number] != null){
              bul=true;
         } else bul=false;
@@ -96,7 +96,7 @@ public class WriteArrayList<T> implements Iterable<T> {
             this.arr[numberShear]=this.arr[numberShear+1];}
         this.arr[top]= null;
             top--;
-    }     else  throw new EmptyStackException();
+    }     else  throw new ArrayIndexOutOfBoundsException();
     }
     @Override
     public Iterator<T>  iterator(){
