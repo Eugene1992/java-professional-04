@@ -8,7 +8,7 @@ import java.util.EmptyStackException;
 
 public class MyStackTest {
 
-    private MyStack<String> myStack;
+    /*private MyStack<String> myStack;
     private String testValue;
 
     @Before
@@ -27,5 +27,5 @@ public class MyStackTest {
     @Test(expected = EmptyStackException.class)
     public void popFromEmptyTest() {
         myStack.pop();
-    }
+    }*/
 }

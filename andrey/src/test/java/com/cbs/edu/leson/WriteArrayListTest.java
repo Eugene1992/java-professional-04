@@ -29,7 +29,7 @@ public class WriteArrayListTest {
     @Test
     public void addTest() {
         arrList.add(testValue);
-        String savedValue = arrList.get(arrList.size());
+        String savedValue = arrList.get(0);
         Assert.assertEquals(savedValue, testValue);
     }
 
