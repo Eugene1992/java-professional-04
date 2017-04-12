@@ -111,11 +111,4 @@ public class MyArrayListTest {
         Integer element = myArrayList.iterator().next();
         Assert.assertEquals(value1, element);
     }
-
-    @Test
-    public void countSymbolTest() {
-        Integer count = 11;
-        Assert.assertNotNull(myArrayList.countSymbol());
-        Assert.assertEquals(count, myArrayList.countSymbol().get("Hello, Java"));
-    }
 }
