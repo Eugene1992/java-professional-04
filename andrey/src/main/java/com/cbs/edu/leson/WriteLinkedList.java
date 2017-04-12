@@ -11,21 +11,25 @@ import java.util.Iterator;
  */
 public class WriteLinkedList<T> implements Iterable<T> {
         private static final int startSize = 16;
-        private T[] arr;
-        public int top;
+        private T[] elementsArr;
+        private char[] nextArr;
+        private char[] prevArr;
 
         public WriteLinkedList(){
-            this.top = 1;
-            this.arr = (T[]) new Object[startSize];
+            this.elementsArr = (T[]) new Object[startSize];
+            this.nextArr = new char[startSize];
+            this.prevArr = new char[startSize];
         }
 
         // add - Adds an element to the end of an array
 
         public T add(T object){
-            if (top == arr.length) {
-                T[] newArr = (T[]) new Object[(this.arr.length*3)/2 + 1];
-                System.arraycopy(this.arr, 0, newArr, 0, this.top);
-                this.arr = newArr;
+
+                if (top == arr.length) {
+                    T[] newArr = (T[]) new Object[(this.arr.length * 3) / 2 + 1];
+                    System.arraycopy(this.arr, 0, newArr, 0, this.top);
+                    this.arr = newArr;
+                }
             }
             this.arr[top++] = object;
             return object;
