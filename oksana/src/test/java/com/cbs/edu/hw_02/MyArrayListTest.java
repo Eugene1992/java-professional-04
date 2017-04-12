@@ -7,87 +7,76 @@ import org.junit.Test;
 
 public class MyArrayListTest {
     private MyArrayList<Integer> myArrayList;
-    private Integer value1;
-    private Integer value2;
-    private Integer value3;
-
+    private Integer valueFirst;
+    private Integer valueSecond;
+    private final int incorrectIndex = -3;
 
     @Before
     public void setUp() {
         myArrayList = new MyArrayList<>();
-        value1 = 45;
-        value2 = 50;
-        value3 = 3;
+        valueFirst = 45;
+        valueSecond = 50;
     }
 
     @Test
-    public void addTest1PlusGetTest() {
-
-        Assert.assertTrue(myArrayList.add(value2));
-        /*myArrayList.add(value1);
-        myArrayList.add(value2);
-       myArrayList.add(1,value3);
-        Integer element = myArrayList.get(1);
-        Assert.assertEquals(value3, element);*/
-
+    public void addTest1() {
+        Assert.assertTrue(myArrayList.add(valueFirst));
     }
 
-    //как написать тест для метода add(int index, T value), если он ничего не возвращает
     @Test
     public void addTest2() {
-
+        final int index = 0;
+        myArrayList.add(valueFirst);
+        myArrayList.add(index, valueSecond);
+        Integer element = myArrayList.get(index);
+        Assert.assertEquals(valueSecond, element);
 
     }
-
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void addWrongIndex() {
-        myArrayList.add(-5, value1);
+        myArrayList.add(incorrectIndex, valueFirst);
     }
 
-    //как написать тест, если не использовать метод add???
     @Test
     public void removeTest() {
-        myArrayList.add(value1);
-        myArrayList.add(value2);
-        myArrayList.add(1, value3);
-        myArrayList.remove(1);
-        Integer element = myArrayList.get(1);
-        Assert.assertEquals(value2, element);
+        final int index = 0;
+        myArrayList.add(valueFirst);
+        myArrayList.add(valueSecond);
+        myArrayList.remove(index);
+        Integer element = myArrayList.get(index);
+        Assert.assertEquals(valueSecond, element);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void removeWrongIndex() {
-        myArrayList.add(value1);
-        myArrayList.remove(-5);
+        myArrayList.remove(incorrectIndex);
     }
 
     @Test
     public void containsTest() {
-        myArrayList.add(value1);
-        myArrayList.add(value2);
-        Assert.assertTrue(myArrayList.contains(value2));
+        myArrayList.add(valueFirst);
+        Assert.assertTrue(myArrayList.contains(valueFirst));
     }
 
     @Test
     public void setTest() {
-        myArrayList.add(value1);
-        myArrayList.add(value2);
-        Integer element = myArrayList.set(0, value3);
-        Assert.assertEquals(value3, element);
+        final int index = 0;
+        myArrayList.add(valueFirst);
+        Integer element = myArrayList.set(index, valueSecond);
+        Assert.assertEquals(valueSecond, element);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void setWrongIndex() {
-        final int unexpectedIndex = -3;
-        myArrayList.set(unexpectedIndex, value3);
+        myArrayList.set(incorrectIndex, valueFirst);
     }
 
     @Test
     public void sizeTest() {
         final int expectedSize = 5;
         for (int i = 0; i < expectedSize; i++) {
-            myArrayList.add(value2);
+            myArrayList.add(valueFirst);
         }
         final int actualSize = myArrayList.size();
         Assert.assertEquals(expectedSize, actualSize);
@@ -100,22 +89,15 @@ public class MyArrayListTest {
 
     @Test
     public void hasNextTest() {
-        myArrayList.add(value1);
+        myArrayList.add(valueFirst);
         Assert.assertTrue(myArrayList.iterator().hasNext());
     }
 
     @Test
     public void nextTest() {
-        myArrayList.add(value1);
+        myArrayList.add(valueFirst);
         Assert.assertNotNull(myArrayList.iterator().next());
         Integer element = myArrayList.iterator().next();
-        Assert.assertEquals(value1, element);
-    }
-
-    @Test
-    public void countSymbolTest() {
-        Integer count = 11;
-        Assert.assertNotNull(myArrayList.countSymbol());
-        Assert.assertEquals(count, myArrayList.countSymbol().get("Hello, Java"));
+        Assert.assertEquals(valueFirst, element);
     }
 }

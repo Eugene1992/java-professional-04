@@ -4,21 +4,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-/**
- * add(T value) Appends the specified element to the end of this list.
- * add(int index, T value) Inserts the specified element at the specified position in this list.
- * get(int index) Returns the element at the specified position in this list.
- * set(int index, T value) Replaces the element at the specified position in this list with the specified element.
- * contains(T value) Returns true if this list contains the specified element.
- * remove(int index) Removes the element at the specified position in this list.
- * iterator() Returns an iterator over the elements in this list in proper sequence.
- * size() Returns the number of elements in this list.
- * countSymbol() Returns map
- *
- * @param <T>
- */
-
-
 public class MyArrayList<T> implements Iterable {
     private T[] arr;
     private static final int INITIAL_ARRAY_CAPACITY = 16;
@@ -32,6 +17,16 @@ public class MyArrayList<T> implements Iterable {
     }
 
 
+    public void checkException(int index) throws IndexOutOfBoundsException{
+        if (index < 0 | index >= size)
+            throw new IndexOutOfBoundsException();
+    }
+
+    /**add(T value) Appends the specified element to the end of this list.
+     *
+     * @param value
+     * @return
+     */
     public boolean add(T value) {
         if (size == arr.length) {
             T[] newArr = (T[]) new Object[arr.length * 3 / 2 + 1];
@@ -42,9 +37,14 @@ public class MyArrayList<T> implements Iterable {
         return true;
     }
 
+    /**add(int index, T value) Inserts the specified element at the specified position in this list.
+     *
+     * @param index
+     * @param value
+     * @throws IndexOutOfBoundsException
+     */
     public void add(int index, T value) throws IndexOutOfBoundsException {
-        if (index < 0 || index >= size)
-            throw new IndexOutOfBoundsException();
+        checkException(index);
         if (size == arr.length) {
             T[] newArr = (T[]) new Object[arr.length * 3 / 2 + 1];
             System.arraycopy(arr, 0, newArr, 0, size);
@@ -55,52 +55,67 @@ public class MyArrayList<T> implements Iterable {
         size++;
     }
 
+    /**remove(int index) Removes the element at the specified position in this list.
+     *
+     * @param index
+     * @return
+     * @throws IndexOutOfBoundsException
+     */
     public T remove(int index) throws IndexOutOfBoundsException {
-        if (index < 0 || index >= size)
-            throw new IndexOutOfBoundsException();
+        checkException(index);
         System.arraycopy(arr, index + 1, arr, index, size - index - 1);
         T elem = arr[--size];
         arr[size] = null;
         return elem;
     }
 
-    public T get(int index) {
-        if (index < 0 || index >= size)
-            throw new IndexOutOfBoundsException();
+    /**get(int index) Returns the element at the specified position in this list.
+     *
+     * @param index
+     * @return
+     */
+    public T get(int index) throws IndexOutOfBoundsException{
+        checkException(index);
         return arr[index];
     }
 
-    public T set(int index, T value) {
-        if (index < 0 || index >= size)
-            throw new IndexOutOfBoundsException();
+    /**set(int index, T value) Replaces the element at the specified position in this list with the specified element.
+     *
+     * @param index
+     * @param value
+     * @return
+     */
+    public T set(int index, T value) throws IndexOutOfBoundsException {
+        checkException(index);
         return arr[index] = value;
     }
 
+    /**contains(T value) Returns true if this list contains the specified element.
+     *
+     * @param value
+     * @return
+     */
     public boolean contains(T value) {
-        if (value != null) {
             for (T tmp : arr) {
                 if (tmp.equals(value))
                     return true;
             }
-        }
         return false;
     }
 
+    /**size() Returns the number of elements in this list.
+     *
+     * @return
+     */
     public int size() {
         return size;
     }
 
-    Map<String, Integer> countSymbol() {
-        int count = 0;
-        for (int i = 0; i < str.length(); i++) {
-            count++;
-        }
-        Map<String, Integer> map = new HashMap<>();
-        map.put(str, count);
-        return map;
-    }
 
-
+    /**iterator() Returns an iterator over the elements in this list in proper sequence.
+     *
+     * @return Iterator<T>
+     */
     @Override
     public Iterator<T> iterator() {
         return new MyArrayList.MyIterator();
