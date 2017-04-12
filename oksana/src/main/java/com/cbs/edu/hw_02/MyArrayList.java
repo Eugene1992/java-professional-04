@@ -1,8 +1,7 @@
 package com.cbs.edu.hw_02;
 
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
+
 
 public class MyArrayList<T> implements Iterable {
     private T[] arr;
@@ -11,7 +10,6 @@ public class MyArrayList<T> implements Iterable {
     private String str;
 
     public MyArrayList() {
-
         arr = (T[]) new Object[INITIAL_ARRAY_CAPACITY];
         str = "Hello, Java";
     }
@@ -29,7 +27,8 @@ public class MyArrayList<T> implements Iterable {
      */
     public boolean add(T value) {
         if (size == arr.length) {
-            T[] newArr = (T[]) new Object[arr.length * 3 / 2 + 1];
+            final int newSize = arr.length * 3 / 2 + 1;
+            T[] newArr = (T[]) new Object[newSize];
             System.arraycopy(arr, 0, newArr, 0, arr.length);
             this.arr = newArr;
         }
@@ -39,14 +38,15 @@ public class MyArrayList<T> implements Iterable {
 
     /**add(int index, T value) Inserts the specified element at the specified position in this list.
      *
-     * @param index
-     * @param value
-     * @throws IndexOutOfBoundsException
+     * @param index specified insert index
+     * @param value added object
+     * @throws IndexOutOfBoundsException if specified index is illegal
      */
     public void add(int index, T value) throws IndexOutOfBoundsException {
         checkException(index);
         if (size == arr.length) {
-            T[] newArr = (T[]) new Object[arr.length * 3 / 2 + 1];
+            final int newSize = arr.length * 3 / 2 + 1;
+            T[] newArr = (T[]) new Object[newSize];
             System.arraycopy(arr, 0, newArr, 0, size);
             this.arr = newArr;
         }
@@ -57,9 +57,8 @@ public class MyArrayList<T> implements Iterable {
 
     /**remove(int index) Removes the element at the specified position in this list.
      *
-     * @param index
-     * @return
-     * @throws IndexOutOfBoundsException
+     * @param index specified remove object index
+     * @throws IndexOutOfBoundsException if specified index is illegal
      */
     public T remove(int index) throws IndexOutOfBoundsException {
         checkException(index);
@@ -69,43 +68,50 @@ public class MyArrayList<T> implements Iterable {
         return elem;
     }
 
-    /**get(int index) Returns the element at the specified position in this list.
+
+    /** Gives an instance of an element at the specified index.
      *
-     * @param index
-     * @return
+     * @param index specified index for retrieved object
+     * @return founded object
+     * @throws ArrayIndexOutOfBoundsException if specified index is illegal
      */
     public T get(int index) throws IndexOutOfBoundsException{
         checkException(index);
         return arr[index];
     }
 
-    /**set(int index, T value) Replaces the element at the specified position in this list with the specified element.
+    /**Changes the element in the specified position to the one that is transferred.
      *
-     * @param index
-     * @param value
-     * @return
+     * @param index specified updated object index
+     * @param value updated object
+     * @return updated object
      */
     public T set(int index, T value) throws IndexOutOfBoundsException {
         checkException(index);
-        return arr[index] = value;
+        arr[index] = value;
+        return arr[index];
     }
 
-    /**contains(T value) Returns true if this list contains the specified element.
+    /**
+     * Determines the presence of at least some values.
      *
-     * @param value
-     * @return
+     * @param value specified object
+     * @return comparing result
      */
     public boolean contains(T value) {
             for (T tmp : arr) {
-                if (tmp.equals(value))
+                if (tmp.equals(value)) {
                     return true;
+                }
             }
         return false;
     }
 
-    /**size() Returns the number of elements in this list.
+
+    /**
+     * Returns list size.
      *
-     * @return
+     * @return list size
      */
     public int size() {
         return size;
@@ -116,13 +122,17 @@ public class MyArrayList<T> implements Iterable {
      *
      * @return Iterator<T>
      */
+
     @Override
     public Iterator<T> iterator() {
         return new MyArrayList.MyIterator();
     }
 
+    /**
+     * Iterator implementation.
+     */
     private class MyIterator implements Iterator<T> {
-        int current = -1;
+        private int current = -1;
 
         public boolean hasNext() {
             return current + 1 < size;

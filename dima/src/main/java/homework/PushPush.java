@@ -5,8 +5,6 @@ package homework;
  */
 public class PushPush {
     public static void main(String[] args) {
-        for (; ; ) {
-            System.out.println("HELLO MR HELLOWORLD");
-        }
+        System.out.println("HELLO MR HELLOWORLD");
     }
 }
