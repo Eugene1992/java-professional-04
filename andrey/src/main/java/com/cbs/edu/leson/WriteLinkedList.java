@@ -10,62 +10,67 @@ import java.util.Iterator;
  * To change this template use File | Settings | File Templates.
  */
 public class WriteLinkedList<T> implements Iterable<T> {
-        private static final int startSize = 16;
-        private T[] elementsArr;
-        private char[] nextArr;
-        private char[] prevArr;
+    private int size;
+    private Entry<T> header;
 
-        public WriteLinkedList(){
-            this.elementsArr = (T[]) new Object[startSize];
-            this.nextArr = new char[startSize];
-            this.prevArr = new char[startSize];
-        }
-
+    public WriteLinkedList(){
+        header= new Entry<T>(null,header,header);
+        size = 0;
+    }
         // add - Adds an element to the end of an array
-
-        public T add(T object){
-
-                if (top == arr.length) {
-                    T[] newArr = (T[]) new Object[(this.arr.length * 3) / 2 + 1];
-                    System.arraycopy(this.arr, 0, newArr, 0, this.top);
-                    this.arr = newArr;
-                }
-            }
-            this.arr[top++] = object;
-            return object;
+        public void add(T object){
+            Entry<T> newEntry = new Entry<T>(object, header, header.prev);
+        newEntry.prev.next = newEntry;
+        newEntry.next.prev = newEntry;
+        size++;
         }
         // add(int index,T object)- inserts the element into the specified position all items on the left are moved to one element
-
         public T add(int index,T object) throws ArrayIndexOutOfBoundsException{
-            if ((index > 0 ) | (index < this.top) ){
-                if (top == (arr.length)) {
-                    T[] newArr = (T[]) new Object[(this.arr.length*3)/2 + 1];
-                    System.arraycopy(this.arr, 0, newArr, 0, this.top);
-                    this.arr = newArr;
+            if ((index > 0 ) | (index < this.size) ){
+                if (index> (size/2)) {
+                Entry position = header.prev;
+                    for (int numberShear = size; numberShear < index; numberShear--){
+                    position = position.prev;
+                    }
+                Entry<T> newEntry = new Entry<T>(object, position, position.prev);
+                   position.prev=newEntry;
                 }
-                for (int numberShear = top; numberShear < index; numberShear--){
-                    this.arr[numberShear+1]=this.arr[numberShear];}
-                this.arr[index]= object;
-                top++;
+                else {Entry position = header.next;
+                    for (int numberShear = 0; numberShear < index; numberShear++){
+                    position = position.next;
+                    }
+                Entry<T> newEntry = new Entry<T>(object, position.next, position);
+                     position.next=newEntry;
+                }
+                    size++;
             }
             else  throw new ArrayIndexOutOfBoundsException();
             return object;
-
         }
 
         // get - gives an instance of an element at the specified index
 
         public T get(int index) throws ArrayIndexOutOfBoundsException{
-            if (index > -1 | index <= top ){
-                T elem = this.arr[index];
-           /* for (int numberShear = index; numberShear < top; numberShear++){
-                this.arr[numberShear]=this.arr[numberShear+1];} */
-                return elem;
+            if (index > 0 | index <size ){
+                Entry position;
+                if (index> (size/2)) {
+                    position = header.prev;
+                    for (int numberShear = size; numberShear < index; numberShear--){
+                    position = position.prev;
+                    }
+                }
+                else {
+                        position = header.next;
+                    for (int numberShear = 0; numberShear < index; numberShear++){
+                        position = position.next;}
+                    }
+
+              return  (T)position.element;
             }
             else  throw new ArrayIndexOutOfBoundsException();
-        }
+            }
 
-        // set - changes the element in the specified position to the one that is transferred
+   /*     // set - changes the element in the specified position to the one that is transferred
 
         public T set(int index,T object)throws ArrayIndexOutOfBoundsException{
             if (index > 0 | index<=top ){
@@ -115,8 +120,8 @@ public class WriteLinkedList<T> implements Iterable<T> {
             public void remove() {
                 arr[current] = null;
             }
-        }
+        } */
         public int  size(){
-            return top;
-
+            return size;
+        }
 }
