@@ -1,45 +1,58 @@
 package com.cbs.edu.vladimir.hw_01;
 
+import java.util.EmptyStackException;
+import java.util.Iterator;
+
 /**
  * Created by Vladimir on 06.04.2017.
  */
-public class BestStack {
-    private int size;
-    private int[] myStack;
+public class BestStack<T> implements Iterable<T> {
+    private static final int SIZE = 6;
+    private T[] myStack;
     private int top;
 
-    public BestStack(int max) {
-        this.size = max;
-        myStack = new int[size];
+    public BestStack() {
+        myStack = (T[]) new Object[SIZE];
         top = -1;
     }
 
-    /**
-     * Adds new object into stack.
-     *
-     * @param element specified object
-     */
-    public void push(int element) {
-        try {
-            myStack[++top] = element;
-        } catch (RuntimeException e) {
-            System.out.println("Stack is full");
-        }
+    public T push(T object) {
+        myStack[++top] = object;
+        return object;
     }
 
-    /**
-     * Retrieves the object from stack.
-     *
-     * @return retrieved object.
-     */
-    public int pop() {
-        try {
-            return myStack[top];
-        } catch (RuntimeException e) {
-            System.out.println("RuntimeException!!!");
+
+    public T pop() throws EmptyStackException {
+
+            T elem = myStack[top];
+            myStack[top] = null;
+            return elem;
+
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return null;
+    }
+
+    private class BestIterator implements Iterator<T>{
+        private int index;
+        @Override
+        public boolean hasNext() {
+            return index < top;
         }
-        return top;
+
+        @Override
+        public T next() {
+            return myStack[index--];
+        }
+
+        @Override
+        public void remove() {
+            myStack[index--] = null;
+        }
     }
 }
+
 
 
