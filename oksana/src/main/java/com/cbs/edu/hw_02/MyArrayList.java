@@ -2,28 +2,30 @@ package com.cbs.edu.hw_02;
 
 import java.util.Iterator;
 
-
+/**
+ * Custom ArrayList implementation.
+ * @param <T> generic type
+ */
 public class MyArrayList<T> implements Iterable {
     private T[] arr;
     private static final int INITIAL_ARRAY_CAPACITY = 16;
     private int size;
-    private String str;
 
     public MyArrayList() {
         arr = (T[]) new Object[INITIAL_ARRAY_CAPACITY];
-        str = "Hello, Java";
     }
 
 
-    public void checkException(int index) throws IndexOutOfBoundsException{
-        if (index < 0 | index >= size)
+    public void checkException(int index) throws IndexOutOfBoundsException {
+        if (index < 0 | index >= size) {
             throw new IndexOutOfBoundsException();
+        }
     }
 
     /**add(T value) Appends the specified element to the end of this list.
      *
-     * @param value
-     * @return
+     * @param value added object
+     * @return If the object is added, return a Boolean value true
      */
     public boolean add(T value) {
         if (size == arr.length) {
@@ -68,14 +70,14 @@ public class MyArrayList<T> implements Iterable {
         return elem;
     }
 
-
     /** Gives an instance of an element at the specified index.
      *
      * @param index specified index for retrieved object
      * @return founded object
      * @throws ArrayIndexOutOfBoundsException if specified index is illegal
      */
-    public T get(int index) throws IndexOutOfBoundsException{
+
+    public T get(int index) throws IndexOutOfBoundsException {
         checkException(index);
         return arr[index];
     }
@@ -120,7 +122,7 @@ public class MyArrayList<T> implements Iterable {
 
     /**iterator() Returns an iterator over the elements in this list in proper sequence.
      *
-     * @return Iterator<T>
+     * @return object Iterator
      */
 
     @Override
