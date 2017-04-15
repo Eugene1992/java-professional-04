@@ -1,11 +1,11 @@
 package com.cbs.edu.vladimir.hw_02;
 
-import java.util.AbstractList;
+
 import java.util.Arrays;
 import java.util.Iterator;
 
 /**
- * Created by Vladimir on 12.04.2017.
+ * @param <T> tag.
  */
 public class MyList<T> implements Iterable<T> {
 
@@ -18,11 +18,15 @@ public class MyList<T> implements Iterable<T> {
         this.array = (T[]) new Object[capacity];
     }
 
+    /**
+     * Add value without index in MyList.
+     */
     public void add(T value) {
 
         if (top == this.array.length) {
+            final int enlargement = 3 / 2 + 1;
+            int newCapacity = array.length * enlargement;
 
-            int newCapacity = array.length * 3 / 2 + 1;
             T[] newArray = (T[]) new Object[newCapacity];
             System.arraycopy(array, 0, newArray, 0, array.length);
             this.array = newArray;
@@ -33,11 +37,13 @@ public class MyList<T> implements Iterable<T> {
         }
     }
 
-
+    /**
+     * Add value by index in MyList.
+     */
     public void addIndex(int index, T value) {
         if (index == this.array.length) {
-
-            int newCapacity = array.length * 3 / 2 + 1;
+            final int enlargement = (3 / 2 + 1);
+            int newCapacity = array.length * enlargement;
             T[] newArray = (T[]) new Object[newCapacity];
             System.arraycopy(array, 0, newArray, 0, array.length);
             this.array = newArray;
@@ -55,10 +61,14 @@ public class MyList<T> implements Iterable<T> {
         this.array[index] = value;
     }
 
+    /**
+     * MyList contains.
+     */
     public boolean contains(T value) {
-
         for (int i = 0; i < this.array.length; i++) {
-            if (this.array[i].equals(value)) return true;
+            if (this.array[i].equals(value)) {
+                return true;
+            }
         }
         return false;
     }
@@ -67,6 +77,9 @@ public class MyList<T> implements Iterable<T> {
         this.array[index] = null;
     }
 
+    /**
+     * MyList size.
+     */
     public int size() {
         int x = 0;
         for (int i = 0; i <= this.array.length; i++) {
@@ -78,33 +91,35 @@ public class MyList<T> implements Iterable<T> {
 
     @Override
     public String toString() {
-        return "MyList{" +
-                "array=" + Arrays.toString(array) +
-                ", capacity=" + capacity +
-                ", top=" + top +
-                '}';
+        return "MyList{" + "array=" + Arrays.toString(array) + ", capacity=" + capacity + ", top=" + top + '}';
     }
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new MyIterator();
     }
 
-    private class myIterator implements Iterator {
-
+    /**
+     * Class MyIterator.
+     */
+    private class MyIterator implements Iterator<T> {
+        private int current = -1;
 
         public boolean hasNext() {
-            return false;
+            return current + 1 < top;
         }
 
-        public Object next() {
-            return null;
+        public T next() {
+            return array[++current];
         }
 
         public void remove() {
-
+            array[current] = null;
         }
     }
+
 }
+
+
 
 
