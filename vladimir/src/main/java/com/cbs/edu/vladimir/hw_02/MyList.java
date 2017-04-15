@@ -40,7 +40,10 @@ public class MyList<T> implements Iterable<T> {
     /**
      * Add value by index in MyList.
      */
-    public void addIndex(int index, T value) {
+    public void addIndex(int index, T value) throws IndexOutOfBoundsException {
+        if (index < 0 || index > array.length) {
+            throw new IndexOutOfBoundsException("index < 0 | index > array.length ");
+        }
         if (index == this.array.length) {
             final int enlargement = (3 / 2 + 1);
             int newCapacity = array.length * enlargement;
@@ -53,11 +56,17 @@ public class MyList<T> implements Iterable<T> {
         }
     }
 
-    public T get(int index) {
-        return this.array[index + 1];
+    public T get(int index) throws IndexOutOfBoundsException {
+        if (index < 0 || index > array.length) {
+            throw new IndexOutOfBoundsException("index < 0 | index > array.length ");
+        }
+        return this.array[index];
     }
 
-    public void set(int index, T value) {
+    public void set(int index, T value) throws IndexOutOfBoundsException {
+        if (index < 0 || index > array.length) {
+            throw new IndexOutOfBoundsException("index < 0 | index > array.length ");
+        }
         this.array[index] = value;
     }
 
