@@ -6,19 +6,20 @@ import java.net.URL;
 
 /**
  * ImageReaderFromPageUrl - write an API that should download all files from given URL to user file system.
- * Incoming args: URL(), files extension, path for saving.
+ * Incoming args: URL(http://flangex.herokuapp.com/io/load), files extension, path for saving.
  */
 public class ImageReaderFromPageUrl {
     public static String get(String urlString) {
         StringBuilder result = new StringBuilder();
         String line;
         try {
-            URL url = new URL("http://flangex.herokuapp.com/io/load");
+            URL url = new URL(urlString);
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
             while ((line = reader.readLine()) != null)
-                System.out.println(line);
+
                 result.append(line);
-                reader.close();
+            System.out.println(line);
+            reader.close();
         } catch (Exception e) {
 
         }
