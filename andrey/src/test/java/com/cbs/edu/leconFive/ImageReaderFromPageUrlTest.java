@@ -1,6 +1,6 @@
 package com.cbs.edu.leconFive;
 
-import com.cbs.edu.lesonFive.*;
+import com.cbs.edu.lesonFive.ImageReaderFromPageUrl;
 import org.junit.Test;
 
 /**
@@ -14,7 +14,8 @@ public class ImageReaderFromPageUrlTest {
     @Test
 public void addWrongIndex(){
     String page = ImageReaderFromPageUrl.getHtmlPage("http://flangex.herokuapp.com/io/load");
-        ImageReaderFromPageUrl.UrlFinder(page);
+       //ImageReaderFromPageUrl.UrlFinder(page);
+       System.out.println(page.toCharArray());
 }
     @Test
 public void FileImageUrlTest(){

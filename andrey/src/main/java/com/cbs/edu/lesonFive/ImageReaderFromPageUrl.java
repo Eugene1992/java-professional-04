@@ -14,15 +14,18 @@ public class ImageReaderFromPageUrl {
     //UrlFinder - selects URL from the line.
     public static void UrlFinder(String urlString){
         char[] charArr = urlString.toCharArray();
-        for (int position=-1;position< charArr.length; position++ ){
+        for (int position=0 ; position< charArr.length ; position++ ){
             int TegLength= 7;
-            String partString = "";
-            for (int wordPartIndekator=-1; wordPartIndekator <TegLength; wordPartIndekator++){
-                partString = partString+charArr[position+wordPartIndekator];
+            String partString = "0";
+            String letter = "a";
+            for (int wordPartIndekator = 0; wordPartIndekator <= TegLength; wordPartIndekator++) {
+
+                letter = String.valueOf(charArr[position+wordPartIndekator]);
+                partString = partString.concat(letter);
             }
-            if (partString == "href=\""){
+            if (partString == "0href=\""){
                 int nomer = 0;
-                String urlAddress = "";
+                String urlAddress = "http://flangex.herokuapp.com";
                 String element = "";
                 int wordPartIndekator = position+TegLength;
                 while (element == "\""){
@@ -41,13 +44,11 @@ public class ImageReaderFromPageUrl {
             URL url = new URL(urlString);
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
             while ((line = reader.readLine()) != null)
-
                 result.append(line);
-            System.out.println(line);
             reader.close();
         } catch (Exception e) {
         }
-        return (String)result.toString();
+        return result.toString();
     }
     //Unloads a picture into a file from the transmitted value of the urlPage with the name number
    public static void FileImageUrl(String urlPage,int nomer){
