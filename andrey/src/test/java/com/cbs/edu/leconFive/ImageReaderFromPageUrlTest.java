@@ -14,8 +14,9 @@ public class ImageReaderFromPageUrlTest {
     @Test
 public void addWrongIndex(){
     String page = ImageReaderFromPageUrl.getHtmlPage("http://flangex.herokuapp.com/io/load");
-       //ImageReaderFromPageUrl.UrlFinder(page);
-       System.out.println(page.toCharArray());
+       ImageReaderFromPageUrl.UrlFinder(page);
+       //System.out.println(page.toCharArray());
+       // System.out.println("href=\"");
 }
     @Test
 public void FileImageUrlTest(){

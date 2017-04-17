@@ -14,26 +14,31 @@ public class ImageReaderFromPageUrl {
     //UrlFinder - selects URL from the line.
     public static void UrlFinder(String urlString){
         char[] charArr = urlString.toCharArray();
-        for (int position=0 ; position< charArr.length ; position++ ){
-            int TegLength= 7;
-            String partString = "0";
-            String letter = "a";
-            for (int wordPartIndekator = 0; wordPartIndekator <= TegLength; wordPartIndekator++) {
+        int tegLength= 6;
+        for (int position=0 ; position< (charArr.length - tegLength ); position++ ){
 
-                letter = String.valueOf(charArr[position+wordPartIndekator]);
+            String partString = "";
+            String letter = "a";
+            for (int wordPartIndekator = 0; wordPartIndekator < tegLength; wordPartIndekator++) {
+                letter = String.valueOf(charArr[position + wordPartIndekator]);
                 partString = partString.concat(letter);
+                if (partString.equals("href=\"")){
+                String urlAddress = "http://flangex.herokuapp.com/";
+                    String element ="";
+                int indekator = position+tegLength;
+                    do {
+
+                        element= String.valueOf(charArr[indekator]);
+                        if (element.equals("\""))
+                            break;
+                        indekator++;
+                   urlAddress = urlAddress + element;
+                    System.out.print(element+" - "+ position);
+                } while (!element.equals("\""));
+                    System.out.println(urlAddress);
+                    FileImageUrl(urlAddress,position);
             }
-            if (partString == "0href=\""){
-                int nomer = 0;
-                String urlAddress = "http://flangex.herokuapp.com";
-                String element = "";
-                int wordPartIndekator = position+TegLength;
-                while (element == "\""){
-                    element= String.valueOf(charArr[wordPartIndekator]);
-                    wordPartIndekator++;
-                   urlAddress = urlString+element;
-        }
-        FileImageUrl(urlAddress,nomer++);
+
         }
     }
     }
