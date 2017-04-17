@@ -21,9 +21,7 @@ public class ImageReaderFromPageUrl {
             System.out.println(line);
             reader.close();
         } catch (Exception e) {
-
         }
-
         return result.toString();
     }
 
