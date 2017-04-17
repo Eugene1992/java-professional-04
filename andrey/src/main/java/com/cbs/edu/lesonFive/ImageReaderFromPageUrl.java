@@ -16,7 +16,6 @@ public class ImageReaderFromPageUrl {
         char[] charArr = urlString.toCharArray();
         int tegLength= 6;
         for (int position=0 ; position< (charArr.length - tegLength ); position++ ){
-
             String partString = "";
             String letter = "a";
             for (int wordPartIndekator = 0; wordPartIndekator < tegLength; wordPartIndekator++) {
@@ -33,9 +32,7 @@ public class ImageReaderFromPageUrl {
                             break;
                         indekator++;
                    urlAddress = urlAddress + element;
-                    System.out.print(element+" - "+ position);
                 } while (!element.equals("\""));
-                    System.out.println(urlAddress);
                     FileImageUrl(urlAddress,position);
             }
 
