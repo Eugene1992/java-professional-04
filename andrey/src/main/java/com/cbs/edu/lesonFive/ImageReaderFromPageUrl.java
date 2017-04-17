@@ -22,7 +22,8 @@ public class ImageReaderFromPageUrl {
             reader.close();
         } catch (Exception e) {
         }
-        return result.toString();
+        return (String)result.toString();
+
     }
 
 }

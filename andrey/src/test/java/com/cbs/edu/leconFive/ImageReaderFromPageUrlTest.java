@@ -1,6 +1,7 @@
 package com.cbs.edu.leconFive;
 
 import com.cbs.edu.lesonFive.ImageReaderFromPageUrl;
+import org.junit.Test;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,5 +11,9 @@ import com.cbs.edu.lesonFive.ImageReaderFromPageUrl;
  * To change this template use File | Settings | File Templates.
  */
 public class ImageReaderFromPageUrlTest {
+    @Test
+public void addWrongIndex(){
     String page = ImageReaderFromPageUrl.get("http://flangex.herokuapp.com/io/load");
+    System.out.println((String)page);
+}
 }
