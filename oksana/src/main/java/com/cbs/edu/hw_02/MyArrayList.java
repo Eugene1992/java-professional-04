@@ -74,7 +74,7 @@ public class MyArrayList<T> implements Iterable {
      *
      * @param index specified index for retrieved object
      * @return founded object
-     * @throws ArrayIndexOutOfBoundsException if specified index is illegal
+     * @throws IndexOutOfBoundsException if specified index is illegal
      */
 
     public T get(int index) throws IndexOutOfBoundsException {
