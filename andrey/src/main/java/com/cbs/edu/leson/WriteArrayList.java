@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 /**
  * Custom ArrayList implementation.
+ *
  * @param <T> genetic type
  */
 public class WriteArrayList<T> implements Iterable<T> {
@@ -37,7 +38,7 @@ public class WriteArrayList<T> implements Iterable<T> {
     /**
      * Inserts the element into the specified position all items on the left are moved to one element.
      *
-     * @param index specified insert index
+     * @param index  specified insert index
      * @param object added object
      * @return saved object
      * @throws ArrayIndexOutOfBoundsException if specified index is illegal
@@ -80,7 +81,7 @@ public class WriteArrayList<T> implements Iterable<T> {
     /**
      * Changes the element in the specified position to the one that is transferred.
      *
-     * @param index specified updated object index
+     * @param index  specified updated object index
      * @param object updated object
      * @return updated object
      * @throws ArrayIndexOutOfBoundsException if specified index is illegal
