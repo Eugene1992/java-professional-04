@@ -65,7 +65,7 @@ public class WriteLinkedListTest {
     public void containsTest() {
         writeLinkedList.add(value1);
         writeLinkedList.add(value2);
-        Assert.assertTrue(writeLinkedList.contains(value2));
+       Assert.assertTrue(writeLinkedList.contains(value2));
     }
 
     @Test

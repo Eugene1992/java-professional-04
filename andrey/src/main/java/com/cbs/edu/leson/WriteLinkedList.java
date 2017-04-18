@@ -19,8 +19,13 @@ public class WriteLinkedList<T> implements Iterable<T> {
         // add - Adds an element to the end of an array
         public T add(T object){
             Entry<T> newEntry = new Entry<T>(object, header, header.prev);
+           if (size == 0){
+             header.next = newEntry;
+             header.prev = newEntry;
+           } else {
         newEntry.prev.next = newEntry;
         newEntry.next.prev = newEntry;
+           }
         size++;
         return object;
         }
@@ -96,9 +101,7 @@ public class WriteLinkedList<T> implements Iterable<T> {
             for (int number = 0; number < size; number++){
                 if (position.element == object)
                     return bul = true;
-            else {
-                    position = position.next;
-            }
+            else position = position.next;
             }
             return bul;
         }
