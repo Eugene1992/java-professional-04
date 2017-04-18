@@ -1,6 +1,8 @@
 package com.cbs.edu.leson;
-//@param <T> - Indicates the type of the variable
-public class Entry<T>{
+/*@param <T> - Indicates the type of the variable
+  Entry - element linkedList
+ */
+public class Entry<T> {
         private T element;
         private Entry<T> next;
         private Entry<T> prev;

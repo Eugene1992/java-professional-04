@@ -1,15 +1,13 @@
 package com.cbs.edu.lesonFive;
-
+/**
+ * ImageReaderFromPageUrl - write an API that should download all files from given URL to user file system.
+ * Incoming args: URL(http://flangex.herokuapp.com/io/load), files extension, path for saving.
+ */
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-/**
- * ImageReaderFromPageUrl - write an API that should download all files from given URL to user file system.
- * Incoming args: URL(http://flangex.herokuapp.com/io/load), files extension, path for saving.
- */
 public class ImageReaderFromPageUrl {
     //UrlFinder - selects URL from the line.
     public static void UrlFinder(String urlString){
@@ -58,15 +56,15 @@ public class ImageReaderFromPageUrl {
            BufferedImage image =null;
            URL url = new URL(urlPage);
            image = ImageIO.read(url);
-           if (image != null){
+           if (image != null)
                ImageIO.write(image, "jpg",new File("C:\\Users\\Волк\\Desktop\\java-professional-04\\andrey\\src\\main\\java\\com\\cbs\\edu\\lesonFive"+nomer+".png"));
-           }
        }
        catch (FileNotFoundException e) {
    } catch (MalformedURLException e) {
            e.printStackTrace();
-       } catch (IOException e) {
-           e.printStackTrace();
+
+   } catch (IOException e) {
+           e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
        }
    }
 }
