@@ -3,6 +3,10 @@ package com.cbs.edu.hw_01;
 import java.util.EmptyStackException;
 import java.util.Iterator;
 
+/**
+ * Custom Stack implementation.
+ * @param <T> generic type
+ */
 public class MyStack<T> implements Iterable<T> {
 
     private static final int INITIAL_ARRAY_CAPACITY = 5;
@@ -14,6 +18,12 @@ public class MyStack<T> implements Iterable<T> {
         this.arr = (T[]) new Object[INITIAL_ARRAY_CAPACITY];
     }
 
+    /**
+     * Adds new object into stack.
+     *
+     * @param object specified object
+     * @return saved object
+     */
     public T push(T object) {
         if (top == arr.length) {
             T[] newArr = (T[]) new Object[2 * this.arr.length];
@@ -24,6 +34,12 @@ public class MyStack<T> implements Iterable<T> {
         return object;
     }
 
+    /**
+     * Retrieves the object from stack.
+     *
+     * @return retrieved object.
+     * @throws EmptyStackException if stack is empty
+     */
     public T pop() throws EmptyStackException {
         if (top == 0) {
             throw new EmptyStackException();
@@ -39,8 +55,11 @@ public class MyStack<T> implements Iterable<T> {
         return new MyIterator();
     }
 
+    /**
+     * Iterator implementation.
+     */
     private class MyIterator implements Iterator<T> {
-        int current = -1;
+        private int current = -1;
 
         public boolean hasNext() {
             return current + 1 < top;

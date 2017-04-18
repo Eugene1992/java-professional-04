@@ -20,7 +20,7 @@ public class MyStackTest {
     @Test
     public void pushTest() {
         myStack.push(testValue);
-        String savedValue = myStack.pop();
+        String savedValue = myStack.push(testValue);
         Assert.assertEquals(savedValue, testValue);
     }
 
