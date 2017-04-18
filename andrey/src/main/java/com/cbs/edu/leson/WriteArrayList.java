@@ -1,5 +1,4 @@
 package com.cbs.edu.leson;
-
 /**
  • add(T value) - Adds an element to the end of an array
  • add(int index, T value) - inserts the element into the specified position all items on the left are moved to one element
@@ -10,22 +9,17 @@ package com.cbs.edu.leson;
  • iterator()
  • size()
  */
-
 import java.util.EmptyStackException;
 import java.util.Iterator;
-
 public class WriteArrayList<T> implements Iterable<T> {
     private static final int startSize = 1;
     private T[] arr;
     public int top;
-
     public WriteArrayList(){
         this.top = 1;
         this.arr = (T[]) new Object[startSize];
     }
-
     // add - Adds an element to the end of an array
-
     public T add(T object){
         if (top == arr.length) {
             T[] newArr = (T[]) new Object[(this.arr.length*3)/2 + 1];
@@ -36,7 +30,6 @@ public class WriteArrayList<T> implements Iterable<T> {
         return object;
     }
     // add(int index,T object)- inserts the element into the specified position all items on the left are moved to one element
-
     public T add(int index,T object) throws ArrayIndexOutOfBoundsException{
         if ((index > 0 ) | (index < this.top) ){
             if (top == (arr.length)) {
@@ -51,11 +44,8 @@ public class WriteArrayList<T> implements Iterable<T> {
         }
         else  throw new ArrayIndexOutOfBoundsException();
         return object;
-
     }
-
     // get - gives an instance of an element at the specified index
-
     public T get(int index) throws ArrayIndexOutOfBoundsException{
         if (index > 0 | index <= top ){
             T elem = this.arr[index];
@@ -65,20 +55,15 @@ public class WriteArrayList<T> implements Iterable<T> {
         }
         else  throw new EmptyStackException();
     }
-
     // set - changes the element in the specified position to the one that is transferred
-
     public T set(int index,T object)throws ArrayIndexOutOfBoundsException{
         if (index > 0 | index<=top ){
         this.arr[index]= object;
         return object;
         }
         else  throw new ArrayIndexOutOfBoundsException();
-
     }
-
     //contains - determines the presence of at least some values
-
     public boolean contains(T object){
          boolean bul= false;
         for (int number = 1; number < top; number++){
@@ -87,9 +72,7 @@ public class WriteArrayList<T> implements Iterable<T> {
         } else bul=false;
         }    return bul;
     }
-
     //  remove - removes the specified object and all elements that are "to the right" are moved one cell to the left
-
     public void remove(int index)throws ArrayIndexOutOfBoundsException{
         if (index >= 0 | index<top ){
         for (int numberShear = index; numberShear < top; numberShear++){

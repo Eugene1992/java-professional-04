@@ -135,7 +135,6 @@ public class WriteLinkedList<T> implements Iterable<T> {
             public boolean hasNext() {
                 return position.next != header;
             }
-
             public T next() {
                 position = position.next;
                 return (T)position.element;
