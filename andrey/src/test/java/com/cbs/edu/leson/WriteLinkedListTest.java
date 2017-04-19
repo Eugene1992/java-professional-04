@@ -20,17 +20,6 @@ public class WriteLinkedListTest {
         value3 = 3;
     }
 
-   /* @Test
-    public void addTest1PlusGetTest() {
-        Assert.assertEquals(writeLinkedList.add(value2));
-        /*writeLinkedList.add(value1);
-        writeLinkedList.add(value2);
-       writeLinkedList.add(1,value3);
-        Integer element = writeLinkedList.get(1);
-        Assert.assertEquals(value3, element);
-
-    }    */
-
     //как написать тест для метода add(int index, T value), если он ничего не возвращает
     @Test
     public void addTest2() {
@@ -65,7 +54,7 @@ public class WriteLinkedListTest {
     public void containsTest() {
         writeLinkedList.add(value1);
         writeLinkedList.add(value2);
-       Assert.assertTrue(writeLinkedList.contains(value2));
+        Assert.assertTrue(writeLinkedList.contains(value2));
     }
 
     @Test

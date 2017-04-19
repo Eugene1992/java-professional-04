@@ -55,7 +55,9 @@ public class WriteLinkedList<T> implements Iterable<T> {
                 position.prev = newEntry;
             }
             size++;
-        } else throw new ArrayIndexOutOfBoundsException();
+        } else {
+            throw new ArrayIndexOutOfBoundsException();
+        }
         return object;
     }
 
@@ -76,7 +78,9 @@ public class WriteLinkedList<T> implements Iterable<T> {
             }
 
             return (T) position.element;
-        } else throw new ArrayIndexOutOfBoundsException();
+        } else {
+            throw new ArrayIndexOutOfBoundsException();
+        }
     }
 
     // set - changes the element in the specified position to the one that is transferred
@@ -96,7 +100,9 @@ public class WriteLinkedList<T> implements Iterable<T> {
             }
             position.element = object;
             return (T) position.element;
-        } else throw new ArrayIndexOutOfBoundsException();
+        } else {
+            throw new ArrayIndexOutOfBoundsException();
+        }
     }
 
     //contains - method determines whether there is a given element in the link list
@@ -104,9 +110,11 @@ public class WriteLinkedList<T> implements Iterable<T> {
         boolean bul = false;
         Entry position = header;
         for (int number = 0; number < size; number++) {
-            if (position.element == object)
+            if (position.element == object){
                 return bul = true;
-            else position = position.next;
+            }
+            else {
+                position = position.next;}
         }
         return bul;
     }
@@ -129,7 +137,9 @@ public class WriteLinkedList<T> implements Iterable<T> {
             position.next.prev = position.prev;
             position.prev.next = position.next;
             size--;
-        } else throw new ArrayIndexOutOfBoundsException();
+        } else {
+            throw new ArrayIndexOutOfBoundsException();
+        }
     }
 
     @Override
