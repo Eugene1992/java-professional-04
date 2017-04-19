@@ -21,7 +21,7 @@ public class UrlDownload {
         BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
         BufferedWriter out = new BufferedWriter(
                 new OutputStreamWriter(
-                        new FileOutputStream("D:\\java-professional-04\\vova\\src\\main\\java\\com\\cbs\\edu\\vova\\url\\index.html")
+                        new FileOutputStream(System.getProperty("user.dir") + "\\vova\\src\\main\\java\\com\\cbs\\edu\\vova\\url\\index.html")
                 )
         );
         String inputLine;
@@ -31,7 +31,7 @@ public class UrlDownload {
         }
         out.close();
         in.close();
-        File file = new File("D:\\java-professional-04\\vova\\src\\main\\java\\com\\cbs\\edu\\vova\\url\\index.html");
+        File file = new File(System.getProperty("user.dir") + "\\vova\\src\\main\\java\\com\\cbs\\edu\\vova\\url\\index.html");
         Document doc = Jsoup.parse(file, "UTF-8", "http://example.com/");
         Elements elements = doc.getElementsByAttribute("href");
         boolean noImg= false;
@@ -45,7 +45,7 @@ public class UrlDownload {
                 }
             }
             if(!noImg){
-                loadImage("D:\\java-professional-04\\vova\\src\\main\\java\\com\\cbs\\edu\\vova\\url\\" + elem.html() + ".png", siteSplit[0] + ".com" + elem.attr("href"));
+                loadImage(System.getProperty("user.dir") + "\\vova\\src\\main\\java\\com\\cbs\\edu\\vova\\url\\" + elem.html() + ".png", siteSplit[0] + ".com" + elem.attr("href"));
             }
         }
     }

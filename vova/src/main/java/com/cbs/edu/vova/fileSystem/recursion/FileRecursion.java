@@ -38,7 +38,7 @@ public class FileRecursion {
 
 
     private static void writeUsingFileWriter(String data) {
-        File file = new File("D:\\java-professional-04\\vova\\src\\main\\java\\com\\cbs\\edu\\vova\\fileSystem\\recursion\\files.txt");
+        File file = new File(System.getProperty("user.dir") + "\\src\\main\\java\\com\\cbs\\edu\\vova\\fileSystem\\recursion\\files.txt");
         FileWriter fr = null;
         try {
             fr = new FileWriter(file, true);
