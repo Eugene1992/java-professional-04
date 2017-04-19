@@ -2,7 +2,6 @@ package com.cbs.edu.leson;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.EmptyStackException;
@@ -28,7 +27,6 @@ public class WriteArrayListTest {
     }
 
     @Test
-    @Ignore
     public void addTest() {
         arrList.add(testValue);
         String savedValue = arrList.get(0);
@@ -36,7 +34,6 @@ public class WriteArrayListTest {
     }
 
     @Test(expected = EmptyStackException.class)
-    @Ignore
     public void popFromEmptyTest() {
         arrList.get(arrList.size());
     }
