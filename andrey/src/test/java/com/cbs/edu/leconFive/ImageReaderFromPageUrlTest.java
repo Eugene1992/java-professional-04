@@ -14,13 +14,13 @@ public class ImageReaderFromPageUrlTest {
     @Test
 public void addWrongIndex(){
     String page = ImageReaderFromPageUrl.getHtmlPage("http://flangex.herokuapp.com/io/load");
-       ImageReaderFromPageUrl.UrlFinder(page);
+       ImageReaderFromPageUrl.urlFinder(page);
        //System.out.println(page.toCharArray());
        // System.out.println("href=\"");
 }
     @Test
 public void FileImageUrlTest(){
-        ImageReaderFromPageUrl.FileImageUrl("http://flangex.herokuapp.com/resources/img/io/load/img-01.png", 1);
+        ImageReaderFromPageUrl.fileImageUrl("http://flangex.herokuapp.com/resources/img/io/load/img-01.png", 1);
     }
 }
 
