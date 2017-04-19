@@ -14,7 +14,7 @@ import java.util.EmptyStackException;
 import java.util.Iterator;
 
 public class WriteArrayList<T> implements Iterable<T> {
-    private static final int startSize = 1;
+    private static final int startSize = 16;
     private T[] arr;
     public int top;
 
@@ -23,10 +23,20 @@ public class WriteArrayList<T> implements Iterable<T> {
         this.arr = (T[]) new Object[startSize];
     }
 
-    // add - Adds an element to the end of an array
+    /**
+     * increaseinsize - increase in size this.arr
+     */
+    public int increaseInSize(T[] arrInitial) {
+        int outputSize = (arrInitial.length * 3) / 2 + 1;
+        return outputSize;
+    }
+
+    /**
+     * add - Adds an element to the end of an array
+     */
     public T add(T object) {
         if (top == arr.length) {
-            T[] newArr = (T[]) new Object[(this.arr.length * 3) / 2 + 1];
+            T[] newArr = (T[]) new Object[increaseInSize(this.arr)];
             System.arraycopy(this.arr, 0, newArr, 0, this.top);
             this.arr = newArr;
         }
@@ -34,11 +44,14 @@ public class WriteArrayList<T> implements Iterable<T> {
         return object;
     }
 
-    // add(int index,T object)- inserts the element into the specified position all items on the left are moved to one element
+    /**
+     * add(int index,T object)- inserts the element into the specified position all items on the left are moved to one element
+     */
     public T add(int index, T object) throws ArrayIndexOutOfBoundsException {
         if ((index > 0) | (index < this.top)) {
             if (top == (arr.length)) {
-                T[] newArr = (T[]) new Object[(this.arr.length * 3) / 2 + 1];
+
+                T[] newArr = (T[]) new Object[increaseInSize(this.arr)];
                 System.arraycopy(this.arr, 0, newArr, 0, this.top);
                 this.arr = newArr;
             }
@@ -47,48 +60,60 @@ public class WriteArrayList<T> implements Iterable<T> {
             }
             this.arr[index] = object;
             top++;
-        } else throw new ArrayIndexOutOfBoundsException();
+        } else {
+            throw new ArrayIndexOutOfBoundsException();
+        }
         return object;
     }
 
-    // get - gives an instance of an element at the specified index
+    /**
+     * get - gives an instance of an element at the specified index
+     */
     public T get(int index) throws ArrayIndexOutOfBoundsException {
         if (index > 0 | index <= top) {
-            T elem = this.arr[index];
-           /* for (int numberShear = index; numberShear < top; numberShear++){
-                this.arr[numberShear]=this.arr[numberShear+1];} */
-            return elem;
-        } else throw new EmptyStackException();
+            return this.arr[index];
+        } else {
+            throw new EmptyStackException();
+        }
     }
 
-    // set - changes the element in the specified position to the one that is transferred
+    /** set - changes the element in the specified position to the one that is transferred
+    */
     public T set(int index, T object) throws ArrayIndexOutOfBoundsException {
         if (index > 0 | index <= top) {
             this.arr[index] = object;
             return object;
-        } else throw new ArrayIndexOutOfBoundsException();
+        } else {
+            throw new ArrayIndexOutOfBoundsException();
+        }
     }
 
-    //contains - determines the presence of at least some values
-    public boolean contains(T object) {
+    /**contains - determines the presence of at least some values
+    */
+     public boolean contains(T object) {
         boolean bul = false;
         for (int number = 1; number < top; number++) {
             if (this.arr[number] != null) {
                 bul = true;
-            } else bul = false;
+            } else {
+                bul = false;
+            }
         }
         return bul;
     }
 
-    //  remove - removes the specified object and all elements that are "to the right" are moved one cell to the left
-    public void remove(int index) throws ArrayIndexOutOfBoundsException {
+    /**  remove - removes the specified object and all elements that are "to the right" are moved one cell to the left
+     */
+     public void remove(int index) throws ArrayIndexOutOfBoundsException {
         if (index >= 0 | index < top) {
             for (int numberShear = index; numberShear < top; numberShear++) {
                 this.arr[numberShear] = this.arr[numberShear + 1];
             }
             this.arr[top] = null;
             top--;
-        } else throw new ArrayIndexOutOfBoundsException();
+        } else {
+            throw new ArrayIndexOutOfBoundsException();
+        }
     }
 
     @Override
@@ -115,12 +140,6 @@ public class WriteArrayList<T> implements Iterable<T> {
     public int size() {
         return top;
     }
-
-    //  public Map<int,T>   givemap(T objact){
-    //     Map<String, T> staff = new HashMap<String, T>();
-    //     for (int number =0 ; number < top; number++){
-    //        map.put(number,this.arr[number]}
-    //  }
 
 
 }
