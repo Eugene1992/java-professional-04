@@ -4,7 +4,9 @@ import java.util.AbstractList;
 import java.util.Iterator;
 
 /**
- * Created by DarKnight on 019 19.04.17.
+ * My realization of array deque.
+ *
+ * @param <T> type.
  */
 public class MyArrayDeque<T> extends AbstractList implements Iterable {
     private T[] array;
@@ -18,6 +20,11 @@ public class MyArrayDeque<T> extends AbstractList implements Iterable {
         array = (T[]) new Object[capacity];
     }
 
+    /**
+     * Add element to the start of array.
+     *
+     * @param value value.
+     */
     public void addFirst(T value) {
         if (this.amount == this.array.length) {
             extendArray();
@@ -29,6 +36,11 @@ public class MyArrayDeque<T> extends AbstractList implements Iterable {
         }
     }
 
+    /**
+     * Add element to the end of array.
+     *
+     * @param value value.
+     */
     public void addLast(T value) {
         if (this.amount == this.array.length) {
             extendArray();
@@ -36,7 +48,6 @@ public class MyArrayDeque<T> extends AbstractList implements Iterable {
         array[this.amount] = value;
         this.amount += 1;
     }
-
 
     /**
      * Method which extend capacity of array by formula: capacity *3 /2 +1.
@@ -53,6 +64,11 @@ public class MyArrayDeque<T> extends AbstractList implements Iterable {
         return this.array[index];
     }
 
+    /**
+     * Get amount of elements.
+     *
+     * @return int size.
+     */
     public int size() {
         return this.amount;
     }
@@ -61,8 +77,11 @@ public class MyArrayDeque<T> extends AbstractList implements Iterable {
         return new MyArrayDeque.MyIterator();
     }
 
+    /**
+     * Iterator.
+     */
     private class MyIterator implements Iterator<T> {
-        int top = -1;
+        private int top = -1;
 
         public boolean hasNext() {
             return top + 1 < amount;

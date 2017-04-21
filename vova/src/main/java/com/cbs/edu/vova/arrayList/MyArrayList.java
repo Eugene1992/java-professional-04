@@ -5,6 +5,8 @@ import java.util.Iterator;
 
 /**
  * My realization of ArrayList.
+ *
+ * @param <T> type.
  */
 public class MyArrayList<T> extends AbstractList implements Iterable {
     private int capacity;
@@ -20,7 +22,7 @@ public class MyArrayList<T> extends AbstractList implements Iterable {
      * Method adding new value to the end of array,
      * if its need array will auto extend.
      *
-     * @param value
+     * @param value value.
      */
     public void addValue(T value) {
         if (this.amount == this.array.length) {
@@ -37,9 +39,9 @@ public class MyArrayList<T> extends AbstractList implements Iterable {
      * Method adding new value to array by index,
      * if its need array will auto extend.
      *
-     * @param index
-     * @param value
-     * @throws IndexOutOfBoundsException
+     * @param index index.
+     * @param value value.
+     * @throws IndexOutOfBoundsException exception.
      */
     public void addValue(int index, T value) throws IndexOutOfBoundsException {
         if (index > this.capacity) {
@@ -52,7 +54,7 @@ public class MyArrayList<T> extends AbstractList implements Iterable {
             T[] secondArray = (T[]) new Object[this.capacity - index];
             System.arraycopy(this.array, 0, fisrtArray, 0, index - 1);
             System.arraycopy(this.array, index, secondArray, 0, this.capacity - index);
-            System.arraycopy(fisrtArray, 0, this.array, 0, index-1);
+            System.arraycopy(fisrtArray, 0, this.array, 0, index - 1);
             fisrtArray[index] = value;
             this.amount += 1;
             System.arraycopy(secondArray, 0, this.array, index, this.capacity - index);
@@ -62,9 +64,9 @@ public class MyArrayList<T> extends AbstractList implements Iterable {
     /**
      * Method which set value by index.
      *
-     * @param index
-     * @param value
-     * @throws IndexOutOfBoundsException
+     * @param index index.
+     * @param value value.
+     * @throws IndexOutOfBoundsException exception.
      */
     public void setValue(int index, T value) throws IndexOutOfBoundsException {
         if (index > this.capacity) {
@@ -89,8 +91,8 @@ public class MyArrayList<T> extends AbstractList implements Iterable {
      * Finding entire value in array and returm its index
      * or -1 if didnt found it.
      *
-     * @param value
-     * @return
+     * @param value value.
+     * @return int position of value.
      */
     public int containsValue(T value) {
         for (int i = 0; i < this.amount; i++) {
@@ -104,7 +106,7 @@ public class MyArrayList<T> extends AbstractList implements Iterable {
     /**
      * Remove value by index.
      *
-     * @param index
+     * @param index index.
      */
     public void removeValue(int index) {
         if (index > this.capacity) {
@@ -123,8 +125,8 @@ public class MyArrayList<T> extends AbstractList implements Iterable {
     /**
      * Get elemnt by index.
      *
-     * @param index
-     * @return
+     * @param index index.
+     * @return value.
      */
     public T get(int index) {
         return this.array[index];
@@ -133,7 +135,7 @@ public class MyArrayList<T> extends AbstractList implements Iterable {
     /**
      * Method return the number of last element in the array.
      *
-     * @return
+     * @return last index.
      */
     public int getLastIndex() {
         return this.amount;
@@ -155,8 +157,11 @@ public class MyArrayList<T> extends AbstractList implements Iterable {
         return new MyIterator();
     }
 
+    /**
+     * Iterator.
+     */
     private class MyIterator implements Iterator<T> {
-        int top = -1;
+        private int top = -1;
 
         public boolean hasNext() {
             return top + 1 < amount;
