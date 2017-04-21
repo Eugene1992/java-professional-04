@@ -10,7 +10,8 @@ public class Test {
      * Main.
      */
     public static void main(String[] args) {
-        Employee vladimir = new Employee("Vladimir", 20);
+        final int vladimirAge = 20;
+        Employee vladimir = new Employee("Vladimir", vladimirAge);
 
         Class aClass = vladimir.getClass();
         System.out.println(aClass.getSimpleName());

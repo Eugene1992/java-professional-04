@@ -13,7 +13,6 @@ public class Employee {
     @Max(message = "maxAge")
     private int age;
 
-
     @AssertTrue(message = "isMarried ? ")
     private boolean isMarried;
 

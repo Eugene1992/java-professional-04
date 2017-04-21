@@ -12,6 +12,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface Min {
     String message();
-    int min = 18;
-    int minAge() default min;
+    int DEFAULT_MIN_VALUE = 18;
+    int minAge() default DEFAULT_MIN_VALUE;
 }
