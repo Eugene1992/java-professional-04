@@ -65,7 +65,7 @@ public class MyLinkedList<T> {
      */
     public boolean addFirst(T element) {
         Node<T> prevObject = this.head;
-        Node<T> nextObject = new Node<T>((Node<T>) null, element, prevObject);
+        Node<T> nextObject = new Node<>(null, element, prevObject);
         this.head = nextObject;
         if (prevObject == null) {
             this.tail = nextObject;
@@ -151,18 +151,15 @@ public class MyLinkedList<T> {
         if (index == 0) {
             element = nextObject.element;
             head = nextObject.next;
-            size--;
-            return element;
         } else {
             for (int i = index; i > 0; i--) {
                 nextObject = nextObject.next;
             }
             element = nextObject.next.element;
             nextObject.next.element = null;
-            size--;
-            return element;
         }
-
+        size--;
+        return element;
     }
 
     /**
@@ -200,7 +197,7 @@ public class MyLinkedList<T> {
      * @return object Iterator
      */
     public Iterator<T> iterator() {
-        return new MyLinkedList.MyIterator();
+        return new MyIterator();
     }
 
     /**

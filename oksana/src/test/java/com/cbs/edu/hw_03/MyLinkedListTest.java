@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Iterator;
+
 public class MyLinkedListTest {
     private MyLinkedList<Integer> myLinkedList;
     private Integer valueFirst;
@@ -105,8 +107,10 @@ public class MyLinkedListTest {
     @Test
     public void nextTest() {
         myLinkedList.addLast(valueFirst);
-        Assert.assertNotNull(myLinkedList.iterator().next());
-        Integer element = myLinkedList.iterator().next();
+        Iterator<Integer> iterator = myLinkedList.iterator();
+        Integer element = iterator.next();
+        Assert.assertNotNull(element);
         Assert.assertEquals(valueFirst, element);
+//        Integer exception = iterator.next();
     }
 }
