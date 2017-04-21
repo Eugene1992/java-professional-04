@@ -31,7 +31,6 @@ public class MyList<T> implements Iterable<T> {
             System.arraycopy(array, 0, newArray, 0, array.length);
             this.array = newArray;
             newArray[top++] = value;
-
         } else {
             this.array[top++] = value;
         }
