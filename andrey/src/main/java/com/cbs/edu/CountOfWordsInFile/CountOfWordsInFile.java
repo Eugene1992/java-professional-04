@@ -2,6 +2,7 @@ package com.cbs.edu.CountOfWordsInFile;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,19 +20,40 @@ public class CountOfWordsInFile {
      * @param pathToFile   - path to the file with text
      * @param textFromFile - contains all the text in the file
      */
-    public static String fileReaderWithText(String pathToFile) {
+    public static String fileReaderWithText(String pathToFile,String wordsExclude) {
+        HashSet<String> exceptionWordSet = new HashSet<>();
         String textFromFile = null;
+        try(FileReader reader = new FileReader(wordsExclude))
+        {
+            int position;
+            String word = null;
+            while((position=reader.read())!=-1){
+                if (letterVerification((char)position)){
+                    System.out.println((char)position);
+                    exceptionWordSet.add(word);
+                } else {
+                    word = word + ((char) position);
+                }
+
+            }
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+        }
+
         try (FileReader reader = new FileReader(pathToFile)) {
             int position = -1;
             String word = null;
             while ((position = reader.read()) != -1) {
                 char letter = (char) position;
                 if (letterVerification(letter)) {
+                    if (checkWithRegExp(word)& !(exceptionWordSet.contains(word))){
                     textFromFile = textFromFile + word + " ";
                     System.out.print(word + " ");
-                    word = null;
+                   }
+                    word ="";
                 } else {
-                System.out.print((char) position);
               word = word + ((char) position);
                 }
             }
@@ -44,14 +66,14 @@ public class CountOfWordsInFile {
     }
 
     public static boolean checkWithRegExp(String userNameString) {
-        Pattern p = Pattern.compile("^[a-zA-Z-]");
+        Pattern p = Pattern.compile("^[A-Za-z]{3,}");
         Matcher m = p.matcher(userNameString);
         return m.matches();
     }
 
     public static boolean letterVerification(char letter) {
         String userNameString = String.valueOf(letter);
-        Pattern p = Pattern.compile(">< !?,.");
+        Pattern p = Pattern.compile("[>< !?,.]");
         Matcher m = p.matcher(userNameString);
         return m.matches();
     }
