@@ -20,11 +20,12 @@ public class WriteLinkedListTest {
         value3 = 3;
     }
 
-    //как написать тест для метода add(int index, T value), если он ничего не возвращает
     @Test
     public void addTest2() {
-
-
+    writeLinkedList.add(value1);
+    writeLinkedList.add(value2);
+        writeLinkedList.add(1, value3);
+        Assert.assertEquals(writeLinkedList.get(2),value3);
     }
 
 
@@ -33,7 +34,6 @@ public class WriteLinkedListTest {
         writeLinkedList.add(-5, value1);
     }
 
-    //как написать тест, если не использовать метод add???
     @Test
     public void removeTest() {
         writeLinkedList.add(value1);

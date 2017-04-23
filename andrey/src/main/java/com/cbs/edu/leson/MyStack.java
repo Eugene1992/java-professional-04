@@ -16,7 +16,7 @@ public class MyStack<T> implements Iterable<T> {
 
     public T push(T object) {
         if (top == arr.length) {
-            T[] newArr = (T[]) new Object[2 * this.arr.length];
+            T[] newArr = (T[]) new Object[this.arr.length * 2];
             System.arraycopy(this.arr, 0, newArr, 0, this.top);
             this.arr = newArr;
         }

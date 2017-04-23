@@ -35,11 +35,17 @@ public class WriteLinkedList<T> implements Iterable<T> {
     }
 
     // add(int index,T object)- inserts the element into the specified position all items on the left are moved to one element
+
     public T add(int index, T object) throws ArrayIndexOutOfBoundsException {
         if ((index > 0) | (index < this.size)) {
+            if (index == 1){
+                Entry<T> newEntry = new Entry<T>(object, header, header.next);
+                header.next = newEntry;
+                header.prev = newEntry;
+            } else {
             if (index > (size / 2)) {
                 Entry position = header.prev;
-                for (int numberShear = size; numberShear < index; numberShear--) {
+                for (int numberShear = size; numberShear <= index; numberShear--) {
                     position = position.prev;
                 }
                 Entry<T> newEntry = new Entry<T>(object, position, position.prev);
@@ -53,6 +59,7 @@ public class WriteLinkedList<T> implements Iterable<T> {
                 Entry<T> newEntry = new Entry<T>(object, position, position.prev);
                 position.prev.next = newEntry;
                 position.prev = newEntry;
+            }
             }
             size++;
         } else {
@@ -155,8 +162,7 @@ public class WriteLinkedList<T> implements Iterable<T> {
         }
 
         public T next() {
-            position = position.next;
-            return (T) position.element;
+            return (T) position.next.element;
         }
 
         public void remove() {
