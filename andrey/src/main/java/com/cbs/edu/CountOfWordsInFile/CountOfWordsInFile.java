@@ -22,22 +22,25 @@ public class CountOfWordsInFile {
     public static String fileReaderWithText(String pathToFile) {
         String textFromFile = null;
         try (FileReader reader = new FileReader(pathToFile)) {
-            int position;
+            int position = -1;
             String word = null;
             while ((position = reader.read()) != -1) {
-                char letter=(char) position;
-                if (letterVerification(letter) ) {
+                char letter = (char) position;
+                if (letterVerification(letter)) {
                     textFromFile = textFromFile + word + " ";
-                    System.out.print(word+" ");
+                    System.out.print(word + " ");
                     word = null;
+                } else {
+                System.out.print((char) position);
+              word = word + ((char) position);
                 }
-
-                textFromFile = textFromFile + ((char) position);
             }
+
+
         } catch (IOException ex) {
             return ex.getMessage();
         }
-        return textFromFile;
+        return  textFromFile;
     }
 
     public static boolean checkWithRegExp(String userNameString) {
@@ -47,7 +50,7 @@ public class CountOfWordsInFile {
     }
 
     public static boolean letterVerification(char letter) {
-        String userNameString =  String.valueOf(letter);
+        String userNameString = String.valueOf(letter);
         Pattern p = Pattern.compile(">< !?,.");
         Matcher m = p.matcher(userNameString);
         return m.matches();
