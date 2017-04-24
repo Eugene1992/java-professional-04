@@ -6,6 +6,9 @@ import java.util.*;
  * Program count number of each letter o symbol in the string.
  */
 public class SymbolCounter {
+    /**
+     * Program count number of each letter o symbol in the string.
+     */
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter the string pls");
@@ -20,7 +23,7 @@ public class SymbolCounter {
         for (int i = 0; i < str.length(); i++) {
             while (itr.hasNext()) {
                 if (itr.next().getKey().equals(String.valueOf(arr[i]))) {
-                    value = itr.next().getValue()+ 1;
+                    value = itr.next().getValue() + 1;
                     hashMap.put(itr.next().getKey(), value);
                 } else {
                     hashMap.put(String.valueOf(arr[i]), 1);

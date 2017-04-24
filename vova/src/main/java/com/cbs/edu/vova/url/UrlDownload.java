@@ -5,16 +5,18 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
-
+import javax.imageio.ImageIO;
 /**
  * Program which download html using URL and load all images from refferences.
  */
 public class UrlDownload {
+    /**
+     * Program which download html using URL and load all images from refferences.
+     */
     public static void main(String[] args) throws IOException {
         URL url = new URL("http://flangex.herokuapp.com/io/load");
         String[] siteSplit = String.valueOf(url).split(".com");
@@ -34,7 +36,7 @@ public class UrlDownload {
         File file = new File(System.getProperty("user.dir") + "\\vova\\src\\main\\java\\com\\cbs\\edu\\vova\\url\\index.html");
         Document doc = Jsoup.parse(file, "UTF-8", "http://example.com/");
         Elements elements = doc.getElementsByAttribute("href");
-        boolean noImg= false;
+        boolean noImg = false;
         for (Element elem : elements) {
             String[] linkSplit = String.valueOf(elem.attr("href")).split("/");
             for (String linkPart : linkSplit) {
@@ -44,13 +46,15 @@ public class UrlDownload {
                     break;
                 }
             }
-            if(!noImg){
+            if (!noImg) {
                 loadImage(System.getProperty("user.dir") + "\\vova\\src\\main\\java\\com\\cbs\\edu\\vova\\url\\" + elem.html() + ".png", siteSplit[0] + ".com" + elem.attr("href"));
             }
         }
     }
 
-    /** Method which load image using URL.
+    /**
+     * Method which load image using URL.
+     *
      * @param name The name of saved image.
      * @param url  URL where program can find this image.
      * @return img.

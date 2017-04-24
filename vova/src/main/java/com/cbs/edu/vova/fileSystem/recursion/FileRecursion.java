@@ -36,7 +36,11 @@ public class FileRecursion {
         }
     }
 
-
+    /**
+     * Method which write string to the file.
+     *
+     * @param data string ith information.
+     */
     private static void writeUsingFileWriter(String data) {
         File file = new File(System.getProperty("user.dir") + "\\src\\main\\java\\com\\cbs\\edu\\vova\\fileSystem\\recursion\\files.txt");
         FileWriter fr = null;
