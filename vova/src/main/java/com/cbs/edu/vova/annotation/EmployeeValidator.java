@@ -20,8 +20,11 @@ public class EmployeeValidator implements Validator {
     }
 
     @Override
-    public boolean validate(Collection type) {
-        return false;
+    public boolean validate(Collection collection) {
+        for (Object col: collection) {
+            validate(col);
+        }
+        return true;
     }
 
     /**

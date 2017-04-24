@@ -8,5 +8,5 @@ import java.util.Collection;
 public interface Validator<T> {
     boolean validate(T type);
 
-    boolean validate(Collection<T> type);
+    boolean validate(Collection<T> collection);
 }

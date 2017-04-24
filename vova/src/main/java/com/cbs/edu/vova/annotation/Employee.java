@@ -4,15 +4,17 @@ package com.cbs.edu.vova.annotation;
  * Created by User on 19.04.2017.
  */
 public class Employee {
-
-    @NotNull(message = "Name cant be empty") @Max(maxSize = 20, message = "Max length for name is 15")
+    private final int MAXSIZE = 20;
+    private final int SIZE = 30;
+    private final int MINSIZE = 18;
+    @NotNull(message = "Name cant be empty") @Max(maxSize = MAXSIZE, message = "Max length for name is 15")
     private String name;
-    @NotNull(message = "Age cant be empty") @Max(maxSize = 20, message = "Max age for user is 95")
-    @Min(minSize = 18, message = "Min age for user 18")
+    @NotNull(message = "Age cant be empty") @Max(maxSize = MAXSIZE, message = "Max age for user is 95")
+    @Min(minSize = MINSIZE, message = "Min age for user 18")
     private int age;
-    @Size(size = 30, message = "Max length for address is 30")
+    @Size(size = SIZE, message = "Max length for address is 30")
     private String address;
-    @Size(size = 20, message = "Max length for email is 10")
+    @Size(size = SIZE, message = "Max length for email is 10")
     private String email;
     @AssertTrue(message = "Sorry we don't communicate with aliens")
     private boolean isHuman;

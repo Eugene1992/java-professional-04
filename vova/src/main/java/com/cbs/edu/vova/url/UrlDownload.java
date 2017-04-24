@@ -5,13 +5,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
-
-
+import javax.imageio.ImageIO;
 /**
  * Program which download html using URL and load all images from refferences.
  */
