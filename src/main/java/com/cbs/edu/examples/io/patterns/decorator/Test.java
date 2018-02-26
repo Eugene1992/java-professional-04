@@ -10,7 +10,5 @@ public class Test {
         BufferedReader bufferedReader = new BufferedReader(new StringReader(data));
 
         System.out.println(bufferedReader.readLine());
-
-
     }
 }
